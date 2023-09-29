@@ -1,6 +1,10 @@
 import {useState} from "react"
 import TodoForm from "./TodoForm"
-function Todo({setTodos, todos, checkTodo, todo, input}){
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faTrash, faEdit} from "@fortawesome/free-solid-svg-icons"
+
+function Todo({setTodos, todos, checkTodo, todo}){
+
 
     const [edit, setEdit] = useState({
         id: null,
@@ -170,17 +174,17 @@ function Todo({setTodos, todos, checkTodo, todo, input}){
             <input type = "checkbox" checked = {todo.completed} onChange = {() => checkTodo(todo)} />
             <p className = "task" style = {todo.completed ? done: null}>{todo.title}</p>
             
-            <button
+            <FontAwesomeIcon icon={faTrash}
             style = {todo.completed ? show: {display: 'none'}}
             onClick = {removeItem}
             className = "garbage-can"
-        
             >
-            Delete
-            </button>
+            </FontAwesomeIcon>
+            
+            
 
             
-            <button
+            <FontAwesomeIcon icon= {faEdit}
             style = {todo.completed ? show: {display: 'none'}}
             //onClick = {() => handleEditChange(todo.id, todo.text)}
             onClick = {() => setEdit(
@@ -194,8 +198,8 @@ function Todo({setTodos, todos, checkTodo, todo, input}){
             className = "garbage-can"
         
             >
-            Edit
-            </button>
+            
+            </FontAwesomeIcon>
 
             
             

@@ -1,11 +1,13 @@
-import React, {useState} from "react"
-
+import React, {useState, useRef} from "react"
 import TodoList from "./TodoList"
-
 import Todo from "./Todo"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faCheck, faX} from "@fortawesome/free-solid-svg-icons"
 
 function TodoForm(props){
     const [input, setInput] = useState(props.edit ? props.edit.value : "")
+
+    const inputRef = useRef(null)
 
     const handleClick = event => {
         event.preventDefault();
@@ -72,7 +74,8 @@ function TodoForm(props){
             <>
 
             <div className = "todo-edit-container">
-                <input 
+                <input
+                ref = {inputRef} 
                 type = "text"
                 placeholder = "Enter item"
                 value = {input}
@@ -80,8 +83,21 @@ function TodoForm(props){
                 className = "enterField"
                 onChange = {handleInput}
                 />
+
+                <FontAwesomeIcon icon={faX} className = "editButton" 
+
                 
-                <button className = "editButton" type ="submit" onClick = {handleClick}>Edit Item</button>
+                type ="submit" 
+                onClick = {handleClick}>
+        
+                </FontAwesomeIcon>
+                
+                <FontAwesomeIcon icon={faCheck} className = "editButton" 
+                type ="submit" 
+                onClick = {handleClick}>
+
+                </FontAwesomeIcon>
+                
             </div>
             </>
 
