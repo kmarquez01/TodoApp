@@ -9,7 +9,7 @@ import axios from 'axios';
 function TodoApp(){
     const[todos, setTodos] = useState(null);
 
-
+    const [hiddenAPI, sethiddenAPI] = useState(true)
 
     useEffect(() => {
         axios.get("https://jsonplaceholder.typicode.com/users/1/todos")
@@ -73,15 +73,42 @@ function TodoApp(){
     }
 
     */
-  
+    const hideAPI = (event) => {
+        event.preventDefault();
+        todos.length = 0
+        sethiddenAPI(false)
+        console.log(todos)
+
+        
+ 
+    }
+
+    const revealAPI = (event) => {
+        event.preventDefault();
+        axios.get("https://jsonplaceholder.typicode.com/users/1/todos")
+             .then((result) => {
+                setTodos(result.data)
+                console.log(result.data)
+        });
+        sethiddenAPI(true)
+        console.log(todos)
+
+    }
 
     return(
 
         
         <div className = "background">
             <div className = "container">
-                {todos ? <TodoList setTodos = {setTodos} todos = {todos} checkTodo = {checkTodo} addItem = {addItem}/> : <div>Hello</div> }
+                <h1 className = "title">Todo List</h1>
+
+                <div className = "buttoncontainer">
+
+                    <button className = "showmore" onClick = {hiddenAPI === true ? hideAPI : revealAPI}>Hide/Show API</button>
+                </div>
                 <TodoForm todos = {todos} setTodos = {setTodos} checkTodo = {checkTodo} onSubmit = {addItem}/>
+                {todos ? <TodoList setTodos = {setTodos} todos = {todos} checkTodo = {checkTodo} addItem = {addItem}/> : <div>Hello</div> }
+            
             </div>
         </div>
     

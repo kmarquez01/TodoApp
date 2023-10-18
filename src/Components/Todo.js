@@ -149,26 +149,8 @@ function Todo({setTodos, todos, checkTodo, todo}){
         return <TodoForm edit = {edit} onClick = {submitUpdate} />
     }
 
-         /* <button
-            type = "submit"
-            style = {todo.completed ? show: {display: 'none'}}
-            onClick = {() => setEdit(
-                {id: todo.id, 
-                 title: todo.title, 
-                 userId: todo.userId, 
-                 completed: todo.compelted})}
-            
-            
-            className = "garbage-can"
-        
-            >
-            Edit
-            </button>
-            */
-
-
     return (
-    <div>
+    <div className = "todoHolder">
     
         <div className = "todoItems">
             <input type = "checkbox" checked = {todo.completed} onChange = {() => checkTodo(todo)} />

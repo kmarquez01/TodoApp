@@ -9,28 +9,72 @@ function TodoForm(props){
 
     const inputRef = useRef(null)
 
+    const [error, setError] = useState(false)
+
+    const [state, setState] = useState(false)
+
     const handleClick = event => {
         event.preventDefault();
 
+
+    
         props.onClick({
+
             
                 userId: 1,
                 id: Math.random(),
                 title: input,
                 completed: false
-                
+            
                 
             
         })
-        
- 
+
+
+
+        // if(props.edit.value == ""){
+            
+        //         setError(true)
+        //         console.log("test")
+           
+        // }
+    
 
         setInput("")
-
-        
-
         
     }
+
+    const handleClick1 = event => {
+        event.preventDefault();
+
+
+    
+        props.onClick({
+
+            
+                userId: 1,
+                id: Math.random(),
+                title: "",
+                completed: false
+            
+                
+            
+        })
+
+
+
+        // if(props.edit.value == ""){
+            
+        //         setError(true)
+        //         console.log("test")
+           
+        // }
+    
+
+        setInput("")
+        
+    }
+
 
 
     const handleSubmit = event => {
@@ -73,6 +117,7 @@ function TodoForm(props){
             
             <>
 
+
             <div className = "todo-edit-container">
                 <input
                 ref = {inputRef} 
@@ -84,21 +129,29 @@ function TodoForm(props){
                 onChange = {handleInput}
                 />
 
-                <FontAwesomeIcon icon={faX} className = "editButton" 
+                <FontAwesomeIcon icon={faX} className = "editButtonYes" 
 
-                
+                name = "no"
                 type ="submit" 
-                onClick = {handleClick}>
+                onClick =  {handleClick1}
+                >
         
                 </FontAwesomeIcon>
                 
-                <FontAwesomeIcon icon={faCheck} className = "editButton" 
+                <FontAwesomeIcon icon={faCheck} className = "editButtonNo" 
+                name = "yes"
                 type ="submit" 
                 onClick = {handleClick}>
 
                 </FontAwesomeIcon>
+
+                {/* {error?
+            <label>Invalid input</label>: "test"} */}
                 
             </div>
+
+            
+            
             </>
 
             ) : (
