@@ -22,7 +22,7 @@ function TodoForm(props){
 
             
                 userId: 1,
-                id: Math.random(),
+                id: Math.random() * 1000,
                 title: input,
                 completed: false
             

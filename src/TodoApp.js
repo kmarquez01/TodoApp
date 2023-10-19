@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
 
-function TodoApp(){
+function TodoApp(todo){
     const[todos, setTodos] = useState(null);
 
     const [hiddenAPI, sethiddenAPI] = useState(true)
@@ -75,7 +75,19 @@ function TodoApp(){
     */
     const hideAPI = (event) => {
         event.preventDefault();
-        todos.length = 0
+        
+        // const todoIndex = todos.findIndex((task) => task.id === todo.id)
+        //         const updatedTodos = [...todos];
+
+        //         const updatedTodo = updatedTodos[todoIndex];
+        //         updatedTodo[todoIndex] = updatedTodos
+
+        axios.get("https://jsonplaceholder.typicode.com/users/1/todos")
+             .then((result) => {
+                setTodos([...todos].filter((index) => (index.id < 20 && index.id < 1)))
+                console.log(result.data)
+        });
+        // todos.length = 0
         sethiddenAPI(false)
         console.log(todos)
 
@@ -87,7 +99,9 @@ function TodoApp(){
         event.preventDefault();
         axios.get("https://jsonplaceholder.typicode.com/users/1/todos")
              .then((result) => {
-                setTodos(result.data)
+                const newArray = [...todos]
+                setTodos(result.data.concat(newArray))
+                // setTodos(result.data)
                 console.log(result.data)
         });
         sethiddenAPI(true)
