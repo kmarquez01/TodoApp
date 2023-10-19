@@ -10,8 +10,6 @@ import axios from "axios"
 
 function TodoList ({ todos, setTodos, checkTodo, addTodo, removeItem, editItem, handleEditChange}) {
 
-    const [hiddenAPI, sethiddenAPI] = useState(true)
-
  
 
     const show = {
