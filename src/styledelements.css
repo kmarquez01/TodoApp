@@ -198,10 +198,10 @@ body{
     align-items: center;
     */
     display: grid;
-    grid-template-columns: 0px 300px 40px 40px;
+    grid-template-columns: 20px 280px 40px 40px;
     grid-gap: 27px;
     padding-top: 30px;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
     height: 50px;
     font-size: larger;
     align-content: center;
@@ -210,6 +210,19 @@ body{
     justify-content: center;
 }
 
+.todoItems-sub{
+  display: grid;
+  grid-template-columns: 0px 300px 40px 40px;
+  grid-gap: 27px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  height: 50px;
+  font-size: larger;
+  align-content: center;
+  align-items: center;
+  justify-items: start;
+  justify-content: center;
+}
 .todo-form{
     /* width: 100vh; */
     display: flex;
