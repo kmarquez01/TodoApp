@@ -16,7 +16,7 @@ function TodoForm(props){
     const handleClick = event => {
         event.preventDefault();
 
-
+        inputRef.current.focus()
     
         props.onClick({
 
@@ -117,7 +117,9 @@ function TodoForm(props){
 
 
     const handleInput = event => {
+        
         setInput(event.target.value)
+        
     }
 
    
@@ -131,12 +133,13 @@ function TodoForm(props){
 
             {props.edit ? (
             
+            
             <>
 
             
             <div className = "todo-edit-container">
                 <input
-                ref = {inputRef} 
+                ref = {inputRef}
                 type = "text"
                 placeholder = "Enter item"
                 value = {input}
@@ -144,6 +147,7 @@ function TodoForm(props){
                 className = "enterField"
                 onChange = {handleInput}
                 />
+                
 
                 <FontAwesomeIcon icon={faX} className = "editButtonYes" 
 
@@ -165,10 +169,13 @@ function TodoForm(props){
             <label>Invalid input</label>: "test"} */}
                 
             </div>
+            
 
             
             
             </>
+             
+            
 
             ) : (
 

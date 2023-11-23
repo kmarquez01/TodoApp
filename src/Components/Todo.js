@@ -1,10 +1,11 @@
-import {useState} from "react"
+import {useState, useRef} from "react"
 import TodoForm from "./TodoForm"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faTrash, faEdit, faCirclePlus} from "@fortawesome/free-solid-svg-icons"
 
-function Todo({setTodos, todos, checkTodo, todo}){
+function Todo({setTodos, todos, checkTodo, todo, inputRef}){
 
+    
 
     const [edit, setEdit] = useState({
         id: null,
@@ -40,11 +41,13 @@ function Todo({setTodos, todos, checkTodo, todo}){
 
 
     const submitUpdate = title => {
+        
         editItem(edit.id, title)
         setEdit({
             id: null,
             title: ''
         })
+        
     }
     
 
@@ -145,6 +148,18 @@ function Todo({setTodos, todos, checkTodo, todo}){
         
     // }
 
+    function todoInputClick() {
+        // inputRef.current.focus()
+
+        setEdit(
+            {
+            id: todo.id, 
+            title: todo.title
+            
+            }
+            )
+            
+    }
     if(edit.id){
         return <TodoForm edit = {edit} onClick = {submitUpdate} />
     }
@@ -159,13 +174,9 @@ function Todo({setTodos, todos, checkTodo, todo}){
             <FontAwesomeIcon icon= {faEdit}
             style = {todo.id ? show: {display: 'none'}}
             //onClick = {() => handleEditChange(todo.id, todo.text)}
-            onClick = {() => setEdit(
-                {
-                id: todo.id, 
-                title: todo.title
-                
-                }
-                )}
+            onClick = {
+                todoInputClick
+            }
                             
             className = "garbage-can"
         
