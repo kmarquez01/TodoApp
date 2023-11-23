@@ -7,7 +7,7 @@ import Calendar from "react-calendar";
 import axios from 'axios';
 
 
-function TodoApp(todo){
+function TodoApp({handleSubmit}){
     const[todos, setTodos] = useState(null);
     const[date, setDate] = useState(new Date())
 
@@ -132,7 +132,7 @@ function TodoApp(todo){
                         <button className = "showmore" onClick = {hiddenAPI === true ? hideAPI : revealAPI}>Hide/Show API</button>
                     </div>
                     <TodoForm todos = {todos} setTodos = {setTodos} checkTodo = {checkTodo} onSubmit = {addItem}/>
-                    {todos ? <TodoList setTodos = {setTodos} todos = {todos} checkTodo = {checkTodo} addItem = {addItem}/> : <div>Hello</div> }
+                    {todos ? <TodoList setTodos = {setTodos} todos = {todos} checkTodo = {checkTodo} addItem = {addItem} onSubmit = {handleSubmit}/> : <div>Hello</div> }
                 
                 </div>
 

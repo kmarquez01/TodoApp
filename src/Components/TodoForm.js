@@ -80,7 +80,9 @@ function TodoForm(props){
     const handleSubmit = event => {
         event.preventDefault();
 
-        props.onSubmit({
+        {props.edit ? 
+
+        props.onClick({
             
                 userId: 1,
                 id: Math.random(),
@@ -89,6 +91,20 @@ function TodoForm(props){
                 
             
         })
+       
+        : 
+        
+        props.onSubmit({
+            
+            userId: 1,
+            id: Math.random(),
+            title: input,
+            completed: false
+            
+        
+    })
+        
+    }
         
  
 
@@ -117,7 +133,7 @@ function TodoForm(props){
             
             <>
 
-
+            
             <div className = "todo-edit-container">
                 <input
                 ref = {inputRef} 
@@ -167,7 +183,6 @@ function TodoForm(props){
                     name = "title"
                     className = "enterAddField"
                     onChange = {handleInput}
-                
                 
                 
                 />

@@ -1,7 +1,7 @@
 import {useState} from "react"
 import TodoForm from "./TodoForm"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faTrash, faEdit} from "@fortawesome/free-solid-svg-icons"
+import {faTrash, faEdit, faCirclePlus} from "@fortawesome/free-solid-svg-icons"
 
 function Todo({setTodos, todos, checkTodo, todo}){
 
@@ -156,18 +156,8 @@ function Todo({setTodos, todos, checkTodo, todo}){
             <input type = "checkbox" checked = {todo.completed} onChange = {() => checkTodo(todo)} />
             <p className = "task" style = {todo.completed ? done: null}>{todo.title}</p>
             
-            <FontAwesomeIcon icon={faTrash}
-            style = {todo.completed ? show: {display: 'none'}}
-            onClick = {removeItem}
-            className = "garbage-can"
-            >
-            </FontAwesomeIcon>
-            
-            
-
-            
             <FontAwesomeIcon icon= {faEdit}
-            style = {todo.completed ? show: {display: 'none'}}
+            style = {todo.id ? show: {display: 'none'}}
             //onClick = {() => handleEditChange(todo.id, todo.text)}
             onClick = {() => setEdit(
                 {
@@ -183,12 +173,37 @@ function Todo({setTodos, todos, checkTodo, todo}){
             
             </FontAwesomeIcon>
 
+            <FontAwesomeIcon icon={faTrash}
+            style = {todo.completed ? show: {display: 'none'}}
+            onClick = {removeItem}
+            className = "garbage-can"
+            >
+            </FontAwesomeIcon>
+
             
             
         
                 
          </div>
-
+         <div className = "todoItems-sub">
+            <FontAwesomeIcon icon= {faCirclePlus}
+                style = {todo.id ? show: {display: 'none'}}
+                //onClick = {() => handleEditChange(todo.id, todo.text)}
+                onClick = {() => setEdit(
+                    {
+                    id: todo.id, 
+                    title: todo.title
+                    
+                    }
+                    )}
+                                
+                className = "garbage-can"
+            
+                >
+            
+            </FontAwesomeIcon>
+            <p className = "task" style = {todo.completed ? done: null}>{todo.title}</p>
+         </div>
     </div>
     )
 }
