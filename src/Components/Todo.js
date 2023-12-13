@@ -196,7 +196,7 @@ function Todo({setTodos, todos, checkTodo, todo, inputRef}){
         
                 
          </div>
-         <div className = "todoItems-sub">
+         {/* <div className = "todoItems-sub">
             <FontAwesomeIcon icon= {faCirclePlus}
                 style = {todo.id ? show: {display: 'none'}}
                 //onClick = {() => handleEditChange(todo.id, todo.text)}
@@ -214,7 +214,7 @@ function Todo({setTodos, todos, checkTodo, todo, inputRef}){
             
             </FontAwesomeIcon>
             <p className = "task" style = {todo.completed ? done: null}>{todo.title}</p>
-         </div>
+         </div> */}
     </div>
     )
 }
