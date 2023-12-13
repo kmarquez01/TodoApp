@@ -25,18 +25,6 @@ function TodoApp({handleSubmit}){
 
     const checkTodo = (todo) => {
         
-         
-        /*todos.map(todo => {
-           if(todo.id === id){
-               todo.completed = !todo.completed
-           }
-           return todo
-       })
-       setTodos(todoUpdated)
-       console.log(todoUpdated) */
-
-     
-       
        const todoIndex = todos.findIndex((task) => task.id === todo.id)
        const updatedTodos = [...todos];
 
