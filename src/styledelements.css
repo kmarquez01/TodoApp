@@ -173,41 +173,33 @@ body{
     padding: 25px 0px;
 }
 
+.todo-list-main-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .todoList{
-    background-color: lightblue;
     position: relative;
     display: grid;
-    grid-template-columns: 440px;
     text-align: -webkit-center;
     font-family: sans-serif;
-    padding: 25px 25px;
     justify-content: center;
-        
+    width: 100%;
    
 }
 
 .todoItems{
-    /*
-    display: flex;
-    grid-gap: 20px;
-    padding-top: 30px;
-    padding-bottom: 40px;
-    height: 50px;
-    font-size: larger;
-    align-content: center;
-    align-items: center;
-    */
-    display: grid;
-    grid-template-columns: 20px 280px 40px 40px;
-    grid-gap: 27px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    height: 50px;
-    font-size: larger;
-    align-content: center;
-    align-items: center;
-    justify-items: start;
-    justify-content: center;
+ 
+  display: grid;
+  grid-template-columns: 20px 300px 40px 40px;
+  grid-gap: 27px;
+  padding: 20px;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: start;
 }
 
 .todoItems-sub{
@@ -234,18 +226,15 @@ body{
   justify-content: center;
 }
 .todo-form{
-    /* width: 100vh; */
-    display: flex;
-    background-color: lightblue;
-    align-items: center;
-    gap: 30px;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  background-color: lightblue;
+  align-items: center;
+  justify-content: center;
 }
 
 
-.buttoncontainer{
-    padding: 20px;
-}
+
 .showmore{
     display: block;
     padding: 10px;
@@ -260,17 +249,22 @@ input[type=checkbox]{
     transform: scale(1.5);
 }
 
-input[type=text]{
+/* input[type=text]{
     transform: scale(1.15);
-}
+} */
 
 .task{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 button[type=submit]{
-    transform: scale(1.15);
-    width: 100px;
+  /* transform: scale(1.15); */
+  width: 25%;
+  padding: 10px;
+  font-size: 18px;
+  background: aliceblue;
+  border-style: groove;
+  border-width: 1px;
 }
 
 .enterField{
@@ -286,26 +280,22 @@ input.enterField:focus {
 }
 
 .todo-add-container{
-    transform: scale(1.15);
     display: flex;
     justify-content: center;
-    gap: 50px;
+    width: 100%;
 }
 
 input.enterAddField:focus {
     outline-width: 0;
 }
 
-.todo-add-container{
-    gap: 20px;
-    width: 100%;
-}
+
 
 .todo-edit-container{
     display: grid;
     /* grid-template-columns: 0px 300px 60px 0px; */
-    grid-template-columns: 280px 40px 40px;
-    grid-gap: 27px;
+    grid-template-columns: 300px 50px 50px;
+    grid-gap: 25px;
     padding-top: 30px;
     padding-bottom: 30px;
     padding-left: 80px;
@@ -334,21 +324,29 @@ input.enterAddField:focus {
 
 }
 
-.todo-items-container{
-    margin: 0 -50px;
-}
 
 .todo-items-container{
     display: flex;
-    margin: 0 -50px;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+    width: 100%;
     flex-wrap: nowrap;
     gap: 5px;
+    align-items: center;
 }
 
 .enterAddField{
-    width: 50%;
-    height: 25px;
+  width: 100%;
+  font-size: 18px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  border-style: groove;
+  border-right: none;
+  border-width: 1px;
+}
+
+.sendButton:hover{
+  cursor: pointer;
 }

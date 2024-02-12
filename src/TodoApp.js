@@ -108,21 +108,22 @@ function TodoApp({handleSubmit}){
                 
             
                 <div className = "container">
-                    <Calendar onChange={setDate} value={date}/>
+                    <Calendar onChange={setDate} onClickDay = {setTodos} value={date}/>
 
                 </div>
 
                 <div className = "container">
-                    <h1 className = "title">Todo List</h1>
+                    <div className = "todo-list-main-container">
+                        <h1 className = "title">Todo List</h1>
 
-                    <div className = "buttoncontainer">
+                        <div className = "buttoncontainer">
 
-                        <button className = "showmore" onClick = {hiddenAPI === true ? hideAPI : revealAPI}>Hide/Show API</button>
+                            <button className = "showmore" onClick = {hiddenAPI === true ? hideAPI : revealAPI}>Hide/Show API</button>
+                        </div>
+                        <TodoForm todos = {todos} setTodos = {setTodos} checkTodo = {checkTodo} onSubmit = {addItem}/>
+                        {todos ? <TodoList setTodos = {setTodos} todos = {todos} checkTodo = {checkTodo} addItem = {addItem} onSubmit = {handleSubmit}/> : <div>Hello</div> }
+                        </div>
                     </div>
-                    <TodoForm todos = {todos} setTodos = {setTodos} checkTodo = {checkTodo} onSubmit = {addItem}/>
-                    {todos ? <TodoList setTodos = {setTodos} todos = {todos} checkTodo = {checkTodo} addItem = {addItem} onSubmit = {handleSubmit}/> : <div>Hello</div> }
-                
-                </div>
 
             </div>
         </div>

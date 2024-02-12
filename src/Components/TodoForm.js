@@ -149,7 +149,7 @@ function TodoForm(props){
                 />
                 
 
-                <FontAwesomeIcon icon={faX} className = "editButtonYes" 
+                <FontAwesomeIcon icon={faX} className = "editButtonNo" 
 
                 name = "no"
                 type ="submit" 
@@ -158,7 +158,7 @@ function TodoForm(props){
         
                 </FontAwesomeIcon>
                 
-                <FontAwesomeIcon icon={faCheck} className = "editButtonNo" 
+                <FontAwesomeIcon icon={faCheck} className = "editButtonYes" 
                 name = "yes"
                 type ="submit" 
                 onClick = {handleClick}>
