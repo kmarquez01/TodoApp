@@ -16,7 +16,7 @@ function TodoForm(props){
     const handleClick = event => {
         event.preventDefault();
 
-
+        inputRef.current.focus()
     
         props.onClick({
 
@@ -80,7 +80,9 @@ function TodoForm(props){
     const handleSubmit = event => {
         event.preventDefault();
 
-        props.onSubmit({
+        {props.edit ? 
+
+        props.onClick({
             
                 userId: 1,
                 id: Math.random(),
@@ -89,6 +91,20 @@ function TodoForm(props){
                 
             
         })
+       
+        : 
+        
+        props.onSubmit({
+            
+            userId: 1,
+            id: Math.random(),
+            title: input,
+            completed: false
+            
+        
+    })
+        
+    }
         
  
 
@@ -101,7 +117,9 @@ function TodoForm(props){
 
 
     const handleInput = event => {
+        
         setInput(event.target.value)
+        
     }
 
    
@@ -115,12 +133,13 @@ function TodoForm(props){
 
             {props.edit ? (
             
+            
             <>
 
-
+            
             <div className = "todo-edit-container">
                 <input
-                ref = {inputRef} 
+                ref = {inputRef}
                 type = "text"
                 placeholder = "Enter item"
                 value = {input}
@@ -128,8 +147,9 @@ function TodoForm(props){
                 className = "enterField"
                 onChange = {handleInput}
                 />
+                
 
-                <FontAwesomeIcon icon={faX} className = "editButtonYes" 
+                <FontAwesomeIcon icon={faX} className = "editButtonNo" 
 
                 name = "no"
                 type ="submit" 
@@ -138,7 +158,7 @@ function TodoForm(props){
         
                 </FontAwesomeIcon>
                 
-                <FontAwesomeIcon icon={faCheck} className = "editButtonNo" 
+                <FontAwesomeIcon icon={faCheck} className = "editButtonYes" 
                 name = "yes"
                 type ="submit" 
                 onClick = {handleClick}>
@@ -149,10 +169,13 @@ function TodoForm(props){
             <label>Invalid input</label>: "test"} */}
                 
             </div>
+            
 
             
             
             </>
+             
+            
 
             ) : (
 
@@ -167,7 +190,6 @@ function TodoForm(props){
                     name = "title"
                     className = "enterAddField"
                     onChange = {handleInput}
-                
                 
                 
                 />

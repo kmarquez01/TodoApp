@@ -21,9 +21,146 @@ body{
     justify-content: center;
     text-align: -webkit-center;
     font-family: sans-serif;
-    padding: 50px 0px;
+    padding: 20px 0px;
     padding-left: calc(100vw - 100%)
 }
+
+.master-container{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.react-calendar { 
+    width: 500px;
+    max-width: 100%;
+    background-color: rgb(131, 125, 125);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.125em;
+   }
+  
+   .react-calendar__navigation button {
+    color: white;
+    min-width: 44px;
+    background:none;
+    font-size: 16px;
+    margin-top: 8px;
+   }
+  
+  .react-calendar--doubleView {
+    width: 700px;
+  }
+  .react-calendar--doubleView .react-calendar__viewContainer {
+    display: flex;
+    margin: -0.5em;
+  }
+  .react-calendar--doubleView .react-calendar__viewContainer > * {
+    width: 50%;
+    margin: 0.5em;
+  }
+  .react-calendar,
+  .react-calendar *,
+  .react-calendar *:before,
+  .react-calendar *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .react-calendar button {
+    margin: 0;
+    border: 0;
+    outline: none;
+  }
+  .react-calendar button:enabled:hover {
+    cursor: pointer;
+  }
+  .react-calendar__navigation {
+    display: flex;
+    height: 44px;
+    margin-bottom: 1em;
+  }
+  .react-calendar__navigation button {
+    min-width: 44px;
+    /* background: none; */
+  }
+  .react-calendar__navigation button:enabled:hover,
+  .react-calendar__navigation button:enabled:focus {
+    background-color: #e6e6e6;
+  }
+  .react-calendar__navigation button[disabled] {
+    background-color: #f0f0f0;
+  }
+  .react-calendar__month-view__weekdays {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.75em;
+  }
+  .react-calendar__month-view__weekdays__weekday {
+    padding: 0.5em;
+  }
+  .react-calendar__month-view__weekNumbers .react-calendar__tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+    font-weight: bold;
+    padding: calc(0.75em / 0.75) calc(0.5em / 0.75);
+  }
+  .react-calendar__month-view__days__day--weekend {
+    /* color: #d10000; */
+    color: white;
+  }
+  .react-calendar__month-view__days__day--neighboringMonth {
+    color: white;
+  }
+  .react-calendar__year-view .react-calendar__tile,
+  .react-calendar__decade-view .react-calendar__tile,
+  .react-calendar__century-view .react-calendar__tile {
+    padding: 2em 0.5em;
+  }
+  .react-calendar__tile {
+    max-width: 100%;
+    text-align: center;
+    padding: 0.75em 0.5em;
+    background: none;
+  }
+  .react-calendar__tile:disabled {
+    background-color: #f0f0f0;
+  }
+  .react-calendar__tile:enabled:hover,
+  .react-calendar__tile:enabled:focus {
+    background-color: #e6e6e6;
+  }
+  .react-calendar__tile--now {
+    /* background: #ffff76; */
+    background-color: #6f48eb;
+  }
+  .react-calendar__tile--now:enabled:hover,
+  .react-calendar__tile--now:enabled:focus {
+    background: #ffffa9;
+  }
+  .react-calendar__tile--hasActive {
+    background: #76baff;
+  }
+  .react-calendar__tile--hasActive:enabled:hover,
+  .react-calendar__tile--hasActive:enabled:focus {
+    background: #a9d4ff;
+  }
+  .react-calendar__tile--active {
+    background: #6f48eb;
+    color: white;
+  }
+  .react-calendar__tile--active:enabled:hover,
+  .react-calendar__tile--active:enabled:focus {
+    background: #1087ff;
+  }
+  .react-calendar--selectRange .react-calendar__tile--hover {
+    background-color: #e6e6e6;
+  }
 
 .container{
     background: lightblue;
@@ -33,59 +170,71 @@ body{
     justify-content: center;
     text-align: -webkit-center;
     font-family: sans-serif;
-    padding: 50px 0px;
+    padding: 25px 0px;
+}
+
+.todo-list-main-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .todoList{
-    background-color: lightblue;
     position: relative;
     display: grid;
-    grid-template-columns: 440px;
     text-align: -webkit-center;
     font-family: sans-serif;
-    padding: 25px 25px;
     justify-content: center;
-        
+    width: 100%;
    
 }
 
 .todoItems{
-    /*
-    display: flex;
-    grid-gap: 20px;
-    padding-top: 30px;
-    padding-bottom: 40px;
-    height: 50px;
-    font-size: larger;
-    align-content: center;
-    align-items: center;
-    */
-    display: grid;
-    grid-template-columns: 0px 300px 40px 40px;
-    grid-gap: 27px;
-    padding-top: 30px;
-    padding-bottom: 40px;
-    height: 50px;
-    font-size: larger;
-    align-content: center;
-    align-items: center;
-    justify-items: start;
-    justify-content: center;
+ 
+  display: grid;
+  grid-template-columns: 20px 300px 40px 40px;
+  grid-gap: 27px;
+  padding: 20px;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: start;
 }
 
+.todoItems-sub{
+  /*
+  display: flex;
+  grid-gap: 20px;
+  padding-top: 30px;
+  padding-bottom: 40px;
+  height: 50px;
+  font-size: larger;
+  align-content: center;
+  align-items: center;
+  */
+  display: grid;
+  grid-template-columns: 20px 280px 40px 40px;
+  grid-gap: 27px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  height: 50px;
+  font-size: larger;
+  align-content: center;
+  align-items: center;
+  justify-items: start;
+  justify-content: center;
+}
 .todo-form{
-    /* width: 100vh; */
-    display: flex;
-    background-color: lightblue;
-    align-items: center;
-    gap: 30px;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  background-color: lightblue;
+  align-items: center;
+  justify-content: center;
 }
 
 
-.buttoncontainer{
-    padding: 20px;
-}
+
 .showmore{
     display: block;
     padding: 10px;
@@ -100,17 +249,22 @@ input[type=checkbox]{
     transform: scale(1.5);
 }
 
-input[type=text]{
+/* input[type=text]{
     transform: scale(1.15);
-}
+} */
 
 .task{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 button[type=submit]{
-    transform: scale(1.15);
-    width: 100px;
+  /* transform: scale(1.15); */
+  width: 25%;
+  padding: 10px;
+  font-size: 18px;
+  background: aliceblue;
+  border-style: groove;
+  border-width: 1px;
 }
 
 .enterField{
@@ -118,6 +272,7 @@ button[type=submit]{
     border:none;
     background: none;
     font-size: 18px;
+    padding-left: 50px;
 
 }
 
@@ -126,42 +281,33 @@ input.enterField:focus {
 }
 
 .todo-add-container{
-    transform: scale(1.15);
     display: flex;
     justify-content: center;
-    gap: 50px;
+    width: 100%;
 }
 
 input.enterAddField:focus {
     outline-width: 0;
 }
 
-.todo-add-container{
-    gap: 20px;
-    width: 100%;
-}
+
 
 .todo-edit-container{
     display: grid;
-    /* grid-template-columns: 0px 300px 60px 0px; */
-    grid-template-columns: 300px 40px 40px;
-    grid-gap: 27px;
-    padding-top: 30px;
-    padding-bottom: 40px;
-    padding-left: 66px;
-    height: 50px;
+    grid-template-columns: 375px 55px 20px;
+    gap: 15px;
     font-size: larger;
-    align-content: center;
-    align-items: center;
-    justify-items: start;
-    justify-content:center;
-
     background-color: mintcream;
     border: black;
     border-style: solid;
     border-width: thin;
     border-radius: 5px;
-    width:100%;
+    width: 100%;
+    padding: 20px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: start;
     
 }
 
@@ -175,21 +321,29 @@ input.enterAddField:focus {
 
 }
 
-.todo-items-container{
-    margin: 0 -50px;
-}
 
 .todo-items-container{
     display: flex;
-    margin: 0 -50px;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+    width: 100%;
     flex-wrap: nowrap;
     gap: 5px;
+    align-items: center;
 }
 
 .enterAddField{
-    width: 50%;
-    height: 25px;
+  width: 100%;
+  font-size: 18px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  border-style: groove;
+  border-right: none;
+  border-width: 1px;
+}
+
+.sendButton:hover{
+  cursor: pointer;
 }

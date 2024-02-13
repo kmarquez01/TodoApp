@@ -3,11 +3,13 @@ import TodoList from "./Components/TodoList"
 import TodoForm from "./Components/TodoForm"
 import "./styledelements.css"
 import React, { useState, useEffect } from "react";
+import Calendar from "react-calendar";
 import axios from 'axios';
 
 
-function TodoApp(todo){
+function TodoApp({handleSubmit}){
     const[todos, setTodos] = useState(null);
+    const[date, setDate] = useState(new Date())
 
     const [hiddenAPI, sethiddenAPI] = useState(true)
 
@@ -23,18 +25,6 @@ function TodoApp(todo){
 
     const checkTodo = (todo) => {
         
-         
-        /*todos.map(todo => {
-           if(todo.id === id){
-               todo.completed = !todo.completed
-           }
-           return todo
-       })
-       setTodos(todoUpdated)
-       console.log(todoUpdated) */
-
-     
-       
        const todoIndex = todos.findIndex((task) => task.id === todo.id)
        const updatedTodos = [...todos];
 
@@ -113,16 +103,28 @@ function TodoApp(todo){
 
         
         <div className = "background">
-            <div className = "container">
-                <h1 className = "title">Todo List</h1>
 
-                <div className = "buttoncontainer">
-
-                    <button className = "showmore" onClick = {hiddenAPI === true ? hideAPI : revealAPI}>Hide/Show API</button>
-                </div>
-                <TodoForm todos = {todos} setTodos = {setTodos} checkTodo = {checkTodo} onSubmit = {addItem}/>
-                {todos ? <TodoList setTodos = {setTodos} todos = {todos} checkTodo = {checkTodo} addItem = {addItem}/> : <div>Hello</div> }
+            <div className = "master-container">
+                
             
+                <div className = "container">
+                    <Calendar onChange={setDate} onClickDay = {setTodos} value={date}/>
+
+                </div>
+
+                <div className = "container">
+                    <div className = "todo-list-main-container">
+                        <h1 className = "title">Todo List</h1>
+
+                        <div className = "buttoncontainer">
+
+                            <button className = "showmore" onClick = {hiddenAPI === true ? hideAPI : revealAPI}>Hide/Show API</button>
+                        </div>
+                        <TodoForm todos = {todos} setTodos = {setTodos} checkTodo = {checkTodo} onSubmit = {addItem}/>
+                        {todos ? <TodoList setTodos = {setTodos} todos = {todos} checkTodo = {checkTodo} addItem = {addItem} onSubmit = {handleSubmit}/> : <div>Hello</div> }
+                        </div>
+                    </div>
+
             </div>
         </div>
     

@@ -1,10 +1,11 @@
-import {useState} from "react"
+import {useState, useRef} from "react"
 import TodoForm from "./TodoForm"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faTrash, faEdit} from "@fortawesome/free-solid-svg-icons"
+import {faTrash, faEdit, faCirclePlus} from "@fortawesome/free-solid-svg-icons"
 
-function Todo({setTodos, todos, checkTodo, todo}){
+function Todo({setTodos, todos, checkTodo, todo, inputRef}){
 
+    
 
     const [edit, setEdit] = useState({
         id: null,
@@ -40,11 +41,13 @@ function Todo({setTodos, todos, checkTodo, todo}){
 
 
     const submitUpdate = title => {
+        
         editItem(edit.id, title)
         setEdit({
             id: null,
             title: ''
         })
+        
     }
     
 
@@ -70,81 +73,19 @@ function Todo({setTodos, todos, checkTodo, todo}){
         console.log(todo)
     }
 
-    // const editItem = (id) => {
 
+    function todoInputClick() {
+        // inputRef.current.focus()
 
-    // const todoIndex = todos.findIndex((task) => task.id === todo.id)
-
-    
-    // // console.log(todoIndex)
-    // const updatedTodos = [...todos].map((todo) => {
-
-    //     if(todo.id === id){
-    //         todo.title = input
-    //     }
-    //     return todo
-    // });
-
-    // // const updatedTodo = updatedTodos[todoIndex]
-
-    // // setTodos(updatedTodo)
-
-    // // const updatedTodo = updatedTodos[todoIndex]
-
-
-    // // console.log(updatedTodo)
-
-    // // //setTodos(updatedTodo)
-
-
-    // // console.log(updatedTodo)
-
-    // // console.log(updatedTodos)
-      
-    // }
-
-
-
-
-    // const editItem = (todoId, newValue) => {
-
-    //     setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)))
-
-    // }
-
-    // const editItem = (event) => {
-
-    //     event.preventDefault();
-
-    //     // reviseTodo(edit.id, title)
-        
-
-    //     const todoIndex = todos.findIndex((task) => task.id === todo.id)
-
-    //     setEdit(
-    //             {id: todoIndex, 
-    //              title: "test", 
-    //              userId: todoIndex.userId, 
-    //              completed: todoIndex.compelted})
-
-    //     // const newTodo = todoIndex.title
-
-    //     const updatedTodos = [...todos];
-
-    //     const updatedTodo = updatedTodos[todoIndex];
-    //     updatedTodo[todoIndex] = updatedTodos
-
-    //     // updatedTodos = [...todos, newTodo]
-
-    //     // setTodos(updatedTodos.filter((index) => index.id == todo.id));
-
-    //     setTodos(prev => prev.map(item => (item.id === todo.id ? todo.title : item)))
-        
-
-    //     console.log(updatedTodos)
-        
-    // }
-
+        setEdit(
+            {
+            id: todo.id, 
+            title: todo.title
+            
+            }
+            )
+            
+    }
     if(edit.id){
         return <TodoForm edit = {edit} onClick = {submitUpdate} />
     }
@@ -156,26 +97,12 @@ function Todo({setTodos, todos, checkTodo, todo}){
             <input type = "checkbox" checked = {todo.completed} onChange = {() => checkTodo(todo)} />
             <p className = "task" style = {todo.completed ? done: null}>{todo.title}</p>
             
-            <FontAwesomeIcon icon={faTrash}
-            style = {todo.completed ? show: {display: 'none'}}
-            onClick = {removeItem}
-            className = "garbage-can"
-            >
-            </FontAwesomeIcon>
-            
-            
-
-            
             <FontAwesomeIcon icon= {faEdit}
-            style = {todo.completed ? show: {display: 'none'}}
+            style = {todo.id ? show: {display: 'none'}}
             //onClick = {() => handleEditChange(todo.id, todo.text)}
-            onClick = {() => setEdit(
-                {
-                id: todo.id, 
-                title: todo.title
-                
-                }
-                )}
+            onClick = {
+                todoInputClick
+            }
                             
             className = "garbage-can"
         
@@ -183,12 +110,37 @@ function Todo({setTodos, todos, checkTodo, todo}){
             
             </FontAwesomeIcon>
 
+            <FontAwesomeIcon icon={faTrash}
+            style = {todo.completed ? show: {display: 'none'}}
+            onClick = {removeItem}
+            className = "garbage-can"
+            >
+            </FontAwesomeIcon>
+
             
             
         
                 
          </div>
-
+         {/* <div className = "todoItems-sub">
+            <FontAwesomeIcon icon= {faCirclePlus}
+                style = {todo.id ? show: {display: 'none'}}
+                //onClick = {() => handleEditChange(todo.id, todo.text)}
+                onClick = {() => setEdit(
+                    {
+                    id: todo.id, 
+                    title: todo.title
+                    
+                    }
+                    )}
+                                
+                className = "garbage-can"
+            
+                >
+            
+            </FontAwesomeIcon>
+            <p className = "task" style = {todo.completed ? done: null}>{todo.title}</p>
+         </div> */}
     </div>
     )
 }
