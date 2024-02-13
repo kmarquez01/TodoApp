@@ -108,7 +108,7 @@ function TodoApp({handleSubmit}){
                 
             
                 <div className = "container">
-                    <Calendar onChange={setDate} onClickDay = {setTodos} value={date}/>
+                    <Calendar onChange={setDate} onClickDay = { (() => setTodos([]))} value={date}/>
 
                 </div>
 
