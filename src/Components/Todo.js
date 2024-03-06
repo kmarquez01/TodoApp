@@ -10,8 +10,10 @@ function Todo({setTodos, todos, checkTodo, todo, inputRef}){
     const [edit, setEdit] = useState({
         id: null,
         title: "",
+        // subtitle: "",
         userId: 1,
-        completed: false
+        completed: false,
+ 
     })
     
 
@@ -76,7 +78,7 @@ function Todo({setTodos, todos, checkTodo, todo, inputRef}){
 
     function todoInputClick() {
         // inputRef.current.focus()
-
+        
         setEdit(
             {
             id: todo.id, 
@@ -129,7 +131,7 @@ function Todo({setTodos, todos, checkTodo, todo, inputRef}){
                 onClick = {() => setEdit(
                     {
                     id: todo.id, 
-                    title: todo.title
+                    subtitle: todo.subtitle
                     
                     }
                     )}
@@ -139,7 +141,7 @@ function Todo({setTodos, todos, checkTodo, todo, inputRef}){
                 >
             
             </FontAwesomeIcon>
-            <p className = "task" style = {todo.completed ? done: null}>{todo.title}</p>
+            <p className = "task" style = {todo.completed ? done: null}>{todo.completed ? todo.subtitle : "Add Subtask"}</p>
          </div> */}
     </div>
     )

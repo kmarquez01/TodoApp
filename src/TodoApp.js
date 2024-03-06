@@ -22,6 +22,16 @@ function TodoApp({handleSubmit}){
         
     }, [])
 
+    // useEffect( () => {
+    //     if(todos === null) return;
+    //     localStorage.setItem('todos', JSON.stringify(todos))
+    // }, [todos])
+
+    // useEffect( () => {
+    //     const todos = JSON.parse(localStorage.getItem('todos'))
+    //     setTodos(todos)
+    // }, [])
+
 
     const checkTodo = (todo) => {
         
@@ -37,15 +47,17 @@ function TodoApp({handleSubmit}){
    }
 
 
-   const addItem = (todo) => {
+   const addItem = (todo,) => {
 
        
        if(!todo.title){
            return;
        }
+      
        const revisedTodos = [...todos, todo]
 
        setTodos(revisedTodos)
+       
        console.log(revisedTodos)
    }
 
@@ -65,19 +77,13 @@ function TodoApp({handleSubmit}){
     */
     const hideAPI = (event) => {
         event.preventDefault();
-        
-        // const todoIndex = todos.findIndex((task) => task.id === todo.id)
-        //         const updatedTodos = [...todos];
-
-        //         const updatedTodo = updatedTodos[todoIndex];
-        //         updatedTodo[todoIndex] = updatedTodos
 
         axios.get("https://jsonplaceholder.typicode.com/users/1/todos")
              .then((result) => {
                 setTodos([...todos].filter((index) => (index.id < 20 && index.id < 1)))
                 console.log(result.data)
         });
-        // todos.length = 0
+      
         sethiddenAPI(false)
         console.log(todos)
 
@@ -99,6 +105,19 @@ function TodoApp({handleSubmit}){
 
     }
 
+    const handleDateChange = (newDate) => {
+        setDate(newDate);
+        const updatedTodos = todos.filter((todo) => {
+            const todoDate = new Date(todo.date);
+            return (
+                todoDate.getDate() === newDate.getDate() &&
+                todoDate.getMonth() === newDate.getMonth() &&
+                todoDate.getFullYear() === newDate.getFullYear()
+            );
+        });
+        setTodos(updatedTodos);
+    };
+
     return(
 
         
@@ -108,7 +127,7 @@ function TodoApp({handleSubmit}){
                 
             
                 <div className = "container">
-                    <Calendar onChange={setDate} onClickDay = {setTodos} value={date}/>
+                    <Calendar onChange={handleDateChange} value={date}/>
 
                 </div>
 

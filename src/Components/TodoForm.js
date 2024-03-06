@@ -24,20 +24,11 @@ function TodoForm(props){
                 userId: 1,
                 id: Math.random() * 1000,
                 title: input,
-                completed: false
+                completed: false,
             
                 
             
         })
-
-
-
-        // if(props.edit.value == ""){
-            
-        //         setError(true)
-        //         console.log("test")
-           
-        // }
     
 
         setInput("")
@@ -55,21 +46,13 @@ function TodoForm(props){
                 userId: 1,
                 id: Math.random(),
                 title: "",
-                completed: false
-            
+                completed: false,
+              
                 
             
         })
 
 
-
-        // if(props.edit.value == ""){
-            
-        //         setError(true)
-        //         console.log("test")
-           
-        // }
-    
 
         setInput("")
         
@@ -167,11 +150,10 @@ function TodoForm(props){
 
                 {/* {error?
             <label>Invalid input</label>: "test"} */}
+
                 
             </div>
-            
-
-            
+                 
             
             </>
              

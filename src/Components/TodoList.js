@@ -8,7 +8,7 @@ import axios from "axios"
 
 
 
-function TodoList ({ todos, setTodos, checkTodo, addTodo, removeItem, editItem, handleEditChange}) {
+function TodoList ({ todos, setTodos, checkTodo, addTodo, removeItem, editItem}) {
 
  
 
@@ -17,35 +17,6 @@ function TodoList ({ todos, setTodos, checkTodo, addTodo, removeItem, editItem, 
         width: '50px',
         height: '20px'
     }
-
-    // const hideAPI = (event) => {
-    //     event.preventDefault();
-    //     todos.length = 0
-    //     sethiddenAPI(false)
-    //     console.log(todos)
-
-        
- 
-    // }
-
-    // const revealAPI = (event) => {
-    //     event.preventDefault();
-    //     axios.get("https://jsonplaceholder.typicode.com/users/1/todos")
-    //          .then((result) => {
-    //             setTodos(result.data)
-    //             console.log(result.data)
-    //     });
-    //     sethiddenAPI(true)
-    //     console.log(todos)
-
-    // }
-
-    // const reviseTodo = (todoId, newValue) => {
-    //     if(!newValue.title){
-    //         return;
-    //     }
-    //    setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)))
-    // }
 
 
     return (
