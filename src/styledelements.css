@@ -174,10 +174,15 @@ body{
 }
 
 .todo-list-main-container{
-  width: 100%;
+  /* width: 100%; */
+  width: 32.5rem;
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+
+.todo-form-container{
+  width: 100%;
 }
 
 .todoList{

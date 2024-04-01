@@ -1,189 +1,120 @@
-import React, {useState, useRef} from "react"
-import TodoList from "./TodoList"
-import Todo from "./Todo"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faCheck, faX} from "@fortawesome/free-solid-svg-icons"
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faX } from "@fortawesome/free-solid-svg-icons";
 
-function TodoForm(props){
-    const [input, setInput] = useState(props.edit ? props.edit.value : "")
+function TodoForm({ edit, setEdit, setTodos, todos, date, inputRef }) {
+    const [title, setTitle] = useState(edit ? edit.title : "");
 
-    const inputRef = useRef(null)
+    const handleChange = (e) => {
+        setTitle(e.target.value);
+    };
 
-    const [error, setError] = useState(false)
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!title.trim()) return;
 
-    const [state, setState] = useState(false)
+        if (edit) {
+            const updatedTodos = todos.map((item) =>
+                item.id === edit.id ? { ...item, title } : item
+            );
+            setTodos(updatedTodos);
+            setEdit(false);
+        } else {
+            setTodos([
+                ...todos,
+                {
+                    userId: 1,
+                    id: Math.random(),
+                    title,
+                    completed: false,
+                    date
+                }
+            ]);
+        }
+        setTitle("");
+    };
 
-    const handleClick = event => {
-        event.preventDefault();
+    const handleCancel = () => {
+        setEdit(false);
+        setTitle("");
+    };
 
-        inputRef.current.focus()
-    
-        props.onClick({
-
-            
-                userId: 1,
-                id: Math.random() * 1000,
-                title: input,
-                completed: false,
-            
-                
-            
-        })
-    
-
-        setInput("")
-        
-    }
-
-    const handleClick1 = event => {
-        event.preventDefault();
-
-
-    
-        props.onClick({
-
-            
-                userId: 1,
-                id: Math.random(),
-                title: "",
-                completed: false,
-              
-                
-            
-        })
-
-
-
-        setInput("")
-        
-    }
-
-
-
-    const handleSubmit = event => {
-        event.preventDefault();
-
-        {props.edit ? 
-
-        props.onClick({
-            
-                userId: 1,
-                id: Math.random(),
-                title: input,
-                completed: false
-                
-            
-        })
-       
-        : 
-        
-        props.onSubmit({
-            
-            userId: 1,
-            id: Math.random(),
-            title: input,
-            completed: false
-            
-        
-    })
-        
-    }
-        
- 
-
-        setInput("")
-
-        
-    }
-
-    
-
-
-    const handleInput = event => {
-        
-        setInput(event.target.value)
-        
-    }
-
-   
-
-    
-
-    return(
+    return (
         <div className = "todo-form-container">
 
-            <form className = "todo-form" onSubmit = {handleSubmit}>
-
-            {props.edit ? (
-            
-            
-            <>
-
-            
-            <div className = "todo-edit-container">
-                <input
-                ref = {inputRef}
-                type = "text"
-                placeholder = "Enter item"
-                value = {input}
-                name = "title"
-                className = "enterField"
-                onChange = {handleInput}
-                />
-                
-
-                <FontAwesomeIcon icon={faX} className = "editButtonNo" 
-
-                name = "no"
-                type ="submit" 
-                onClick =  {handleClick1}
-                >
+                  <form className = "todo-form" onSubmit = {handleSubmit}>
         
-                </FontAwesomeIcon>
+                    {edit ? (
+                    
+                    
+                    <>
+        
+                    
+                    <div className = "todo-edit-container">
+                        <input
+                        
+                        type = "text"
+                        placeholder = "Enter item"
+                        value = {title}
+                        name = "title"
+                        className = "enterField"
+                        onChange = {handleChange}
+                        ref={inputRef}
+                        />
+                        
+        
+                        <FontAwesomeIcon icon={faX} className = "editButtonNo" 
+        
+                        name = "no"
+                        type ="submit" 
+                        onClick =  {handleCancel}
+                        >
                 
-                <FontAwesomeIcon icon={faCheck} className = "editButtonYes" 
-                name = "yes"
-                type ="submit" 
-                onClick = {handleClick}>
-
-                </FontAwesomeIcon>
-
-                {/* {error?
-            <label>Invalid input</label>: "test"} */}
-
-                
-            </div>
-                 
-            
-            </>
-             
-            
-
-            ) : (
-
-            <>
-            
-            <div className = "todo-add-container">
-            
-                <input 
-                    type = "text"
-                    placeholder = "Enter item"
-                    value = {input}
-                    name = "title"
-                    className = "enterAddField"
-                    onChange = {handleInput}
-                
-                
-                />
-                
-                <button className = "sendButton" type ="submit" >Add Item</button>
+                        </FontAwesomeIcon>
+                        
+                        <FontAwesomeIcon icon={faCheck} className = "editButtonYes" 
+                        name = "yes"
+                        type ="submit" 
+                        onClick = {handleSubmit}>
+        
+                        </FontAwesomeIcon>
+        
+                        {/* {error?
+                    <label>Invalid input</label>: "test"} */}
+        
+                        
+                    </div>
+                         
+                    
+                    </>
+                     
+                    
+        
+                    ) : (
+        
+                    <>
+                    
+                    <div className = "todo-add-container">
+                    
+                        <input 
+                            type = "text"
+                            placeholder = "Enter item"
+                            value = {title}
+                            name = "title"
+                            className = "enterAddField"
+                            onChange = {handleChange}
+                        
+                        
+                        />
+                        
+                        <button className = "sendButton" type ="submit" >Add Item</button>
+                        </div>
+                    </>
+                    
+                    )}
+                    </form>
                 </div>
-            </>
-            
-            )}
-            </form>
-        </div>
-    )
+    );
 }
 
-export default TodoForm
+export default TodoForm;

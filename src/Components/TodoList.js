@@ -1,28 +1,9 @@
 import Todo from "./Todo"
 
-import TodoForm from "./TodoForm"
-
-import {useEffect, useState} from "react"
-
-import axios from "axios"
-
-
-
-function TodoList ({ todos, setTodos, checkTodo, addTodo, removeItem, editItem}) {
-
- 
-
-    const show = {
-        display: 'block',
-        width: '50px',
-        height: '20px'
-    }
-
+function TodoList ({ todos, setTodos, checkTodo, addTodo, removeItem, editItem, date}) {
 
     return (
-        <div className = "todoList">
-         {/* <form className = "todoList"> */}
-            
+        <div className = "todoList">         
             <div className = "todo-items-container">
             {todos.map((todo) => (
                 
@@ -33,16 +14,12 @@ function TodoList ({ todos, setTodos, checkTodo, addTodo, removeItem, editItem})
                 todo = {todo}
                 key = {todo.id} 
                 editItem = {editItem}
-                
+                date = {date}
                 
                  />
                 
             ))}
-
             </div>
-
-
-        {/* </form> */}
         </div>
         
     );
