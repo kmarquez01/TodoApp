@@ -37,10 +37,12 @@ function Todo({
     const removeItem = () => {
         setTodos(todos.filter((item) => item.id !== todo.id));
     };
+    
 
     if(edit){
         return <TodoForm 
-        edit = {todo} setEdit={setEdit}
+        edit = {todo} 
+        setEdit={setEdit}
         setTodos={setTodos}
         todos={todos}
         date={date} 

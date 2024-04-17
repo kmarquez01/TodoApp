@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Calendar from "react-calendar";
 import axios from 'axios';
 import TodoList from "./Components/TodoList";
 import TodoForm from "./Components/TodoForm";
+import TodoContext from "./Components/TodoContext";
 import "./styledelements.css";
 
 function TodoApp({ handleSubmit }) {
-    const [todos, setTodos] = useState(null);
+    const { todos, setTodos } = useContext(TodoContext);
     const [date, setDate] = useState(new Date());
 
-    useEffect(() => {
-        axios.get("https://jsonplaceholder.typicode.com/users/1/todos")
-            .then((result) => {
-                setTodos(result.data);
-            });
-    }, []);
+    // useEffect(() => {
+    //     axios.get("https://jsonplaceholder.typicode.com/users/1/todos")
+    //         .then((result) => {
+    //             setTodos(result.data);
+    //         });
+    // }, []);
 
     const handleDateChange = (newDate) => {
         setDate(newDate);
@@ -49,21 +50,21 @@ function TodoApp({ handleSubmit }) {
         }
         const revisedTodos = [...todos, todo];
         setTodos(revisedTodos);
+        console.log(revisedTodos)
     }
-
-    
 
     return (
         <div className="background">
             <div className="master-container">
-                <div className="container">
+                {/* <div className="container">
                     <Calendar onChange={handleDateChange} value={date} />
-                </div>
+                </div> */}
                 <div className="container">
+                <Calendar onChange={handleDateChange} value={date} />
                     <div className="todo-list-main-container">
                         <h1 className="title">Todo List</h1>
-                        <TodoForm todos={todos} setTodos={setTodos} checkTodo={checkTodo} onSubmit={addItem} date={date} />
-                        {filteredTodos ? <TodoList setTodos={setTodos} todos={filteredTodos} checkTodo={checkTodo} addItem={addItem} onSubmit={handleSubmit} date={date} /> : <div>Hello</div>}
+                        <TodoForm todos = {todos} setTodos={setTodos} checkTodo={checkTodo} onSubmit={addItem} date={date} />
+                        {filteredTodos ? <TodoList todos={filteredTodos} setTodos = {setTodos} checkTodo={checkTodo} addItem={addItem} onSubmit={handleSubmit} date={date}/> : <div>Hello</div>}
                     </div>
                 </div>
             </div>

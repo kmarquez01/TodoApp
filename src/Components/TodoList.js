@@ -1,6 +1,8 @@
 import Todo from "./Todo"
 
 function TodoList ({ todos, setTodos, checkTodo, addTodo, removeItem, editItem, date}) {
+    
+    const todoItems = Array.isArray(todos) ? todos : [];
 
     return (
         <div className = "todoList">         

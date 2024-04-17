@@ -107,7 +107,7 @@ function TodoForm({ edit, setEdit, setTodos, todos, date, inputRef }) {
                         
                         />
                         
-                        <button className = "sendButton" type ="submit" >Add Item</button>
+                        <button className = "sendButton" type ="submit" >Add</button>
                         </div>
                     </>
                     

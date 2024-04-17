@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TodoApp from './TodoApp';
 import reportWebVitals from './reportWebVitals';
+import { TodoProvider } from './Components/TodoContext';
 
 
 
 
 ReactDOM.render(
-    <TodoApp />,
+  <TodoProvider>
+    <TodoApp />
+  </TodoProvider>,
   document.getElementById('root')
 );
 

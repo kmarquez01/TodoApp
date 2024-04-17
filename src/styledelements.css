@@ -15,6 +15,10 @@ body{
     margin: 0;
 }
 
+svg:hover{
+  cursor: pointer;
+}
+
 .background{
     position: relative;
     display: grid;
@@ -22,28 +26,30 @@ body{
     text-align: -webkit-center;
     font-family: sans-serif;
     padding: 20px 0px;
-    padding-left: calc(100vw - 100%)
+    padding-left: calc(100vw - 100%);
+    height: 100vh;
 }
 
 .master-container{
     display: flex;
     gap: 10px;
     flex-direction: column;
+    justify-content: center;
+
 }
 
 .react-calendar { 
-    width: 500px;
-    max-width: 100%;
-    background-color: rgb(131, 125, 125);
-    color: white;
-    border-radius: 8px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.125em;
+  width: 500px;
+  max-width: 100%;
+  /* background-color: rgb(131, 125, 125); */
+  /* color: white; */
+  border-radius: 8px;
+  /* box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); */
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.125em;
    }
   
    .react-calendar__navigation button {
-    color: white;
     min-width: 44px;
     background:none;
     font-size: 16px;
@@ -70,6 +76,7 @@ body{
     box-sizing: border-box;
   }
   .react-calendar button {
+    font-weight: 600;
     margin: 0;
     border: 0;
     outline: none;
@@ -112,7 +119,6 @@ body{
   }
   .react-calendar__month-view__days__day--weekend {
     /* color: #d10000; */
-    color: white;
   }
   .react-calendar__month-view__days__day--neighboringMonth {
     color: white;
@@ -137,7 +143,7 @@ body{
   }
   .react-calendar__tile--now {
     /* background: #ffff76; */
-    background-color: #6f48eb;
+    background-color: black
   }
   .react-calendar__tile--now:enabled:hover,
   .react-calendar__tile--now:enabled:focus {
@@ -151,7 +157,7 @@ body{
     background: #a9d4ff;
   }
   .react-calendar__tile--active {
-    background: #6f48eb;
+    background: black;
     color: white;
   }
   .react-calendar__tile--active:enabled:hover,
@@ -163,19 +169,22 @@ body{
   }
 
 .container{
-    background: lightblue;
-    width: 100vh;
-    position: relative;
-    display: grid;
-    justify-content: center;
-    text-align: -webkit-center;
-    font-family: sans-serif;
-    padding: 25px 0px;
+  background: lightblue;
+  gap: 3rem;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: -webkit-center;
+  font-family: sans-serif;
+  padding: 3rem;
+  justify-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .todo-list-main-container{
   /* width: 100%; */
-  width: 32.5rem;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -351,4 +360,40 @@ input.enterAddField:focus {
 
 .sendButton:hover{
   cursor: pointer;
+}
+
+
+@media only screen and (max-width: 1300px){
+
+  .container{
+    width: 350px;
+    justify-items: center;
+  }
+
+  .react-calendar{
+    width: 250px;
+  }
+
+  .todo-list-main-container{
+    align-items: center;
+  }
+
+  .todo-form-container{
+    width: 300px;
+  }
+
+  .todoItems{
+    width: 300px;
+    grid-template-columns: 20px 100px 20px 20px;
+  }
+
+  .todo-edit-container{
+    grid-template-columns: 210px 40px 30px;
+    gap: 5px;
+  }
+
+  .enterField{
+    padding-left: 72px;
+  }
+
 }
